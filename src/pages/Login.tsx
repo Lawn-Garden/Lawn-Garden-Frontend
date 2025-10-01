@@ -1,20 +1,21 @@
-import { useState } from 'react';
-import type { ChangeEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Logo from '@/assets/Logo.svg';
-import { LogoStyle } from '@/styles/LogoStyle';
-import Wrapper from '@/styles/Wrapper';
-import Input from '@/components/Input';
-import Button from '@/components/Button';
-import { SignText, TextButton } from '@/components/SignText';
-import { login } from '@/api/auth';
+import { useState } from "react";
+import type { ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import Logo from "@/assets/Logo.svg";
+import { LogoStyle } from "@/styles/LogoStyle";
+import Wrapper from "@/styles/Wrapper";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
+import { SignText, TextButton } from "@/components/SignText";
+import { login } from "@/api/auth";
 // 토큰 저장위한 store
-import { useAuthStore } from '@/store/authStore';
+// 로그인 pr 테스트
+import { useAuthStore } from "@/store/authStore";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleLogin = async () => {
     try {
@@ -23,15 +24,15 @@ export default function Login() {
 
       useAuthStore.getState().setAccessToken(accessToken);
 
-      alert('로그인 성공!');
-      navigate('/main');
+      alert("로그인 성공!");
+      navigate("/main");
     } catch (err: unknown) {
       if (err instanceof Error) {
-        console.error('로그인 실패:', err.message);
+        console.error("로그인 실패:", err.message);
       } else {
-        console.error('로그인 실패: 알 수 없는 오류', err);
+        console.error("로그인 실패: 알 수 없는 오류", err);
       }
-      alert('로그인 실패!');
+      alert("로그인 실패!");
     }
   };
 
@@ -57,7 +58,7 @@ export default function Login() {
 
       <SignText color="#99BC85">
         회원이 아니신가요?
-        <TextButton onClick={() => navigate('/join')}> 회원가입</TextButton>
+        <TextButton onClick={() => navigate("/join")}> 회원가입</TextButton>
       </SignText>
     </Wrapper>
   );
