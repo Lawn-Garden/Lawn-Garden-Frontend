@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '@/App';
 import Login from '@/pages/Login';
 import Join from '@/pages/Join';
-// import NotFound from '@/pages/NotFound';
+import NotFound from '@/pages/NotFound';
 // import Main from '@/pages/Main';
 // import Proof from '@/pages/watering/Proof';
 // import ReadPage from '@/pages/watering/ReadPage';
@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '*',
-        // element: <NotFound />,
+        element: <NotFound />,
       },
     ],
   },
