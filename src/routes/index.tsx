@@ -3,7 +3,7 @@ import App from '@/App';
 import Login from '@/pages/Login';
 import Join from '@/pages/Join';
 import NotFound from '@/pages/NotFound';
-// import Main from '@/pages/Main';
+import Main from '@/pages/Main';
 // import Proof from '@/pages/watering/Proof';
 // import ReadPage from '@/pages/watering/ReadPage';
 // import WritePage from '@/pages/watering/WritePage';
@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
       {
         element: <ProtectedRoute />,
         children: [
-        //   { path: 'main', element: <Main /> },
+          { path: 'main', element: <Main /> },
         //   { path: 'watering', element: <Proof /> },
         //   { path: 'watering/write', element: <WritePage /> },
         //   { path: 'watering/:postId', element: <ReadPage /> },
