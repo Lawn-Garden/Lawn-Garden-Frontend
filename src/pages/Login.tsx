@@ -10,11 +10,31 @@ import { SignText, TextButton } from '@/components/SignText';
 import { login } from '@/api/auth';
 // 토큰 저장위한 store
 import { useAuthStore } from '@/store/authStore';
+import { GITHUB_CLIENT_ID, GITHUB_OAUTH_STATE_KEY } from '@/configs/authConfig';
 
 export default function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const handleLoginWithGuthub = () => {
+    // 난수 state 생성
+    const bytes = new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+    const state = Array.from(bytes, (b) =>
+      b.toString(16).padStart(2, '0')
+    ).join('');
+
+    localStorage.setItem(GITHUB_OAUTH_STATE_KEY, state);
+
+    const params = new URLSearchParams({
+      client_id: GITHUB_CLIENT_ID,
+      redirect_uri: `${window.location.origin}/callback`,
+      state,
+    });
+
+    window.location.href = `https://github.com/login/oauth/authorize?${params.toString()}`;
+  };
 
   const handleLogin = async () => {
     try {
@@ -54,7 +74,8 @@ export default function Login() {
         }
       />
       <Button onClick={handleLogin}>Login</Button>
-
+      {/* todo : github 로그인 버튼 UI 수정 */}
+      <Button onClick={handleLoginWithGuthub}>Guthub 로그인</Button>
       <SignText color="#99BC85">
         회원이 아니신가요?
         <TextButton onClick={() => navigate('/join')}> 회원가입</TextButton>
