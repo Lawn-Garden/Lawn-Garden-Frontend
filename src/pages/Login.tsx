@@ -18,6 +18,10 @@ export default function Login() {
   const [password, setPassword] = useState<string>('');
 
   const handleLoginWithGuthub = () => {
+    if (!GITHUB_CLIENT_ID) {
+      throw new Error('Missing GITHUB_CLIENT_ID');
+    }
+
     // 난수 state 생성
     const bytes = new Uint8Array(16);
     crypto.getRandomValues(bytes);
