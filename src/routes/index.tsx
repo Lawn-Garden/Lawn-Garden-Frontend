@@ -11,6 +11,7 @@ import Main from '@/pages/Main';
 // import Participant from '@/pages/participant/Participant';
 // import MyGarden from '@/pages/mygarden/MyGarden';
 import ProtectedRoute from '@/routes/ProtectedRoute';
+import Callback from '@/pages/Callback';
 
 export const router = createBrowserRouter([
   {
@@ -30,17 +31,21 @@ export const router = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
           { path: 'main', element: <Main /> },
-        //   { path: 'watering', element: <Proof /> },
-        //   { path: 'watering/write', element: <WritePage /> },
-        //   { path: 'watering/:postId', element: <ReadPage /> },
-        //   { path: 'laydown', element: <CheckMember /> },
-        //   { path: 'farmer', element: <Participant /> },
-        //   { path: 'mygarden', element: <MyGarden /> },
+          //   { path: 'watering', element: <Proof /> },
+          //   { path: 'watering/write', element: <WritePage /> },
+          //   { path: 'watering/:postId', element: <ReadPage /> },
+          //   { path: 'laydown', element: <CheckMember /> },
+          //   { path: 'farmer', element: <Participant /> },
+          //   { path: 'mygarden', element: <MyGarden /> },
         ],
       },
       {
         path: '*',
         element: <NotFound />,
+      },
+      {
+        path: 'callback',
+        element: <Callback />,
       },
     ],
   },
