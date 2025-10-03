@@ -14,6 +14,11 @@ interface LoginPayload {
   password: string;
 }
 
+// OAuth 요청 파라미터 타입
+interface LoginWithGithubPayload {
+  code: string;
+}
+
 // 서버 응답 타입
 // 임시로 했는데 맞게 변경
 interface AuthResponse {
@@ -40,4 +45,11 @@ export const login = async (
     username,
     password,
   });
+};
+
+export const loginWithGithub = async ({
+  code,
+}: LoginWithGithubPayload): Promise<any> => {
+  // todo : OAuth 로그인 엔드포인트 수정
+  return await axios.post('', { code });
 };
